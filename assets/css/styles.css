@@ -33,18 +33,6 @@ a.nav-link {
   background-color: #ffffff;
   color: #4b4c4d;
 }
-
-.header-dark {
-  background-size: cover;
-}
-
-.header-dark h1 {
-  color: #fff;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 40px;
-  padding-top: 60px;
-}
-
 /* Highlight Clean */
 .highlight-clean {
   color: #313437;
