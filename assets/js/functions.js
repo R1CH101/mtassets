@@ -58,8 +58,9 @@ var goButton = document.getElementById("search-trigger");
             goButton.click();
     
 }
-async function downloadPDF(url, filename) {
+async function downloadPDF(url, filename, textid) {
     try {
+        document.getElementById(textid).innerHTML = 'Please Wait ...';
       // Fetch the PDF data as a Blob
       const response = await fetch(url);
       const blob = await response.blob();
@@ -73,8 +74,11 @@ async function downloadPDF(url, filename) {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+
+      
+      document.getElementById(textid).innerHTML = 'Download Complete';
     } catch (error) {
-      console.error('Error while downloading PDF:', error);
+        document.getElementById(textid).innerHTML = 'Error Please Try Again';
     }
   }
   
@@ -169,7 +173,7 @@ function AddDownload(id) {
                         }
                         if (data.status == "Done") {
                             // download complete, add download button
-                            download_status_span.innerHTML = `<a style="cursor: pointer"  onclick="downloadPDF('${DOWNLOAD_API}${data.url}', '${results_objects[id].track.name} - ${results_objects[id].track.primaryArtists}.mp3');" target="_blank">Download MP3</a>`;
+                            download_status_span.innerHTML = `<a id="${id}"style="cursor: pointer"  onclick="downloadPDF('${DOWNLOAD_API}${data.url}', '${results_objects[id].track.name} - ${results_objects[id].track.primaryArtists}.mp3','${id}');" target="_blank">Download MP3</a>`;
                             // clear interval
                             clearInterval(interval);
                             return;
