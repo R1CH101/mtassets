@@ -10,22 +10,28 @@
 </head>
 
 <body style="padding-bottom: 50px;background: rgb(0,0,0);">
-    <header class="header-dark" style="color: rgb(205,205,205);padding: 0px 0px 10px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <h3 class="text-center" style="color: rgba(249,255,255,0.81);font-family: Bitter, serif;">Music Player &amp; Downloader</h3>
-                </div>
-            </div>
-        </div>
+    <nav class="navbar sticky-top navbar-dark bg-dark p-1">
         
-    </header>
+        
+        <form class="w-100 d-flex flex-row p-1 m-0 justify-content-between align-items-center">
+                <div class="d-flex p-0 m-0">
+                    <div class="d-flex m-1 w-90" placeholder="Enter Song, Artist or Album name">
+                        <input class="mr-1 form-control float-left fit-content" type="text" id="saavn-search-box" style="margin: 0px;color: var(--gray-dark);max-width: 100%;width: 75%;" placeholder="Enter Name, Year, Artist">
+                        <a class="btn btn-primary" id="saavn-search-trigger" type="submit" style="text-align: center;" onclick="SaavnSearch()"><img width="25px" src="https://mta.apps.lilleycloud.com/assets/img/search.png"></a></div>
+    
+                    <a href="javascript:void(0);" class="m-1 ml-2" id="mpopupLink">
+                        <img width="35px" src="https://mta.apps.lilleycloud.com/assets/img/downloading.png">
+                        </a>
+                </div>
+               
+        </form>
+    </nav>
     <div>
         <div class="tab-content">
             <div class="tab-pane active" role="tabpanel" id="tab-1">
                 <section class="highlight-clean" style="background: #000; color: rgb(249,249,249);padding-top: 20px;">
                     <div class="text-center">
-                        <select id="saavn-bitrate">
+                        <select style="display: none;" id="saavn-bitrate">
                             <option value="4">320kbps</option>
                             <option value="3" selected="">160kbps</option>
                             <option value="2">96kbps</option>
@@ -35,7 +41,7 @@
                     <div class="container" style="padding: 0px;">
                         <div class="intro">
                             <form class="text-center" action="#" method="get">
-                                <div style="width: 95%;margin: auto;padding: 3px;" placeholder="Enter Song, Artist or Album name"><input class="form-control float-left fit-content" type="text" id="saavn-search-box" style="margin: 0px;color: var(--gray-dark);max-width: 100%;width: 75%;" placeholder="Enter Name, Year, Artist"><button class="btn btn-primary" id="saavn-search-trigger" type="submit" style="text-align: center;" onclick="SaavnSearch()">Search</button></div>
+                                
                                 <h5 class="text-uppercase text-center" style="color: rgb(165,255,184);">Results</h5>
                             </form>
                         </div>
@@ -71,11 +77,7 @@
         </div>
     </div>
     <!-- floating downloader popup -->
-    <div class=”float-button” style="width:30px; height:30px; border-radius:50%; background-color:#fff; box-shadow: 0 0 10px #000; cursor:pointer; position:fixed;top:50px; right:20px; z-index:9999;">
-    <!-- download icon -->
-    <a href="javascript:void(0);" class="btn btn-primary" id="mpopupLink">
-    <img width="30px" src="https://mta.apps.lilleycloud.com/assets/img/downloading.png">
-    </a></div>
+    
     <style>
                                 
         #saavn-results{
