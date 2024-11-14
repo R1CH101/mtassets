@@ -175,8 +175,9 @@ function AddDownload(id) {
                             // download complete, add download button
                            
 var newfilename = results_objects[id].track.name + " - " + results_objects[id].track.primaryArtists + ".mp3";
-
+console.log(newfilename)
 newfilename = encodeURI(newfilename);
+console.log(newfilename)
  download_status_span.innerHTML = `<a id="${id}"style="cursor: pointer"  onclick="downloadPDF('${DOWNLOAD_API}${data.url}', '${newfilename}','${id}');" target="_blank">Download MP3</a>`;
                             // clear interval
                             clearInterval(interval);
