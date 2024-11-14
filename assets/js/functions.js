@@ -68,7 +68,7 @@ async function downloadPDF(url, filename, textid) {
       // Create a download link and set its attributes
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
-      link.download = decodeURI(filename);
+      link.download = decodeURI(filename.replace("###$###","'"));
   
       // Append the link to the document, click it, and remove it
       document.body.appendChild(link);
@@ -178,7 +178,9 @@ var newfilename = results_objects[id].track.name + " - " + results_objects[id].t
 console.log(newfilename)
 newfilename = encodeURI(newfilename);
 console.log(newfilename)
- download_status_span.innerHTML = `<a id="${id}"style="cursor: pointer"  onclick='downloadPDF("${DOWNLOAD_API}${data.url}", "${newfilename}","${id}");' target="_blank">Download MP3</a>`;
+newfilename.replace("'","###$###")
+console.log(newfilename)
+ download_status_span.innerHTML = `<a id="${id}"style="cursor: pointer"  onclick="downloadPDF('${DOWNLOAD_API}${data.url}', '${newfilename}','${id}');" target="_blank">Download MP3</a>`;
                             // clear interval
                             clearInterval(interval);
                             return;
