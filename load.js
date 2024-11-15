@@ -7,7 +7,8 @@ function loadApp() {
       return response.text();
     })
     .then((html) => {
-        document.querySelector("html").innerHTML = html  
+       document.documentElement.setAttribute("data-theme","dark") document.querySelector("html").innerHTML = html  
+
         var tag = document.createElement("script");
 tag.src = "https://unpkg.com/feather-icons";
 document.head.appendChild(tag);   
