@@ -26,7 +26,7 @@ function loadPage(pageName) {
 
 var tag = document.createElement("script");
 tag.src = cdn + "assets/js/"+pageName+".js";
-document.head.appendChild(tag); 
+document.body.appendChild(tag); 
     });
   }
 
