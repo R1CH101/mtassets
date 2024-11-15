@@ -10,7 +10,7 @@ function loadApp() {
         document.querySelector("html").innerHTML = html  
         var tag = document.createElement("script");
 tag.src = "https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries";
-document.head.appendChild(tag);   
+document.body.appendChild(tag);   
     });
   }
 
