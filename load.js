@@ -9,8 +9,8 @@ function loadApp() {
     .then((html) => {
         document.querySelector("html").innerHTML = html  
         var tag = document.createElement("script");
-tag.src = "https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries";
-document.body.appendChild(tag);   
+tag.src = "https://unpkg.com/feather-icons";
+document.head.appendChild(tag);   
     });
   }
 
