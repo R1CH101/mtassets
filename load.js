@@ -23,6 +23,10 @@ function loadPage(pageName) {
     })
     .then((html) => {
         document.querySelector("body").innerHTML = html  
+
+var tag = document.createElement("script");
+tag.src = cdn + "assets/js/"+id+".js";
+document.head.appendChild(tag); 
     });
   }
 
