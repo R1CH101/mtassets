@@ -162,7 +162,7 @@ var goButton = document.getElementById("search-trigger");
 
 async function downloadSong(url, filename, buttonid) {
     try {
-        toggleIsLoading('sbtn-'+ buttonid);
+        
       // Fetch the PDF data as a Blob
       const response = await fetch(url);
       const blob = await response.blob();
@@ -191,6 +191,8 @@ async function downloadSong(url, filename, buttonid) {
 var DOWNLOAD_API = "https://openmp3compiler.astudy.org"
 
 function AddDownload(id) {
+
+toggleIsLoading('sbtn-'+ id);
     var bitrate_i = 2;
     // MP3 server API
     var MP3DL = DOWNLOAD_API+"/add?id="+id;
