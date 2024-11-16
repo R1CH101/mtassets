@@ -99,7 +99,7 @@ if (bitrate_i == 4) {quality = 320} else {quality = 160;}
 
 <div class="songresult is-flex">
     <div class="overlay">
-    <img class="songimg" src="` + song-image + `" />
+    <img class="songimg" src="` + song_image + `" />
 </div>
     <div class="innersongtext pl-2 is-flex is-align-items-center is-justify-content-space-between is-flex-grow-5">
     <div>
