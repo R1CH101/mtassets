@@ -32,10 +32,12 @@ var page_index = 1;
 
 
 function nextPage() {
+toggleIsLoading('loadmorebtn');
     var query = document.querySelector("#searchBar").value.trim();
     if (!query) {query = lastSearch;}
     query = encodeURIComponent(query);
     doSongSearch(query,0,true)
+toggleIsLoading('loadmorebtn');
 }
 
 async function doSongSearch(query,NotScroll,page) {
