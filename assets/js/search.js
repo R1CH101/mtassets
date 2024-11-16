@@ -97,7 +97,7 @@ if (bitrate_i == 4) {quality = 320} else {quality = 160;}
     };
       results.push(`
 
-<div class="songresult is-flex">
+<div class="my-2 songresult is-flex">
     <div class="overlay">
     <img class="songimg" src="` + song_image + `" />
 </div>
@@ -131,6 +131,7 @@ if (bitrate_i == 4) {quality = 320} else {quality = 160;}
     results_container.innerHTML = results.join(' ');
     if(!NotScroll){
     document.getElementById("resultstable").scrollIntoView();
+feather.replace();
 toggleIsLoading('searchControl');
     }
 
