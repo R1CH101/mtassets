@@ -220,7 +220,7 @@ newfilename = encodeURI(newfilename);
 console.log(newfilename)
 newfilename = newfilename.replace("'","###$###")
 console.log(newfilename)
-downloadPDF(DOWNLOAD_API + data.url', 'newfilename','id');
+downloadPDF(DOWNLOAD_API + data.url, newfilename,id);
                             // clear interval
                             clearInterval(interval);
                             return;
