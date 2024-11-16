@@ -114,7 +114,7 @@ if (bitrate_i == 4) {quality = 320} else {quality = 160;}
       <i data-feather="play"></i>
     </span>
     </button>
-    <button id="sbtn-`+song_id+`" onclick="toggleIsLoading('sbtn-1')" class="button iconbtns is-small">
+    <button id="sbtn-`+song_id+`" onclick="AddDownload('`+song_id+`')" class="button iconbtns is-small">
     <span class="icon is-large">
       <i data-feather="download"></i>
     </span>
@@ -149,6 +149,84 @@ if(window.location.hash) {
 addEventListener('hashchange', event => { });
 onhashchange = event => {doSongSearch(window.location.hash.substring(1))};
 
+
+
+function searchSong(search_term) {
+    
+document.getElementById('search-box').value=search_term;
+var goButton = document.getElementById("search-trigger");
+            goButton.click();
+    
+}
+
+
+async function downloadSong(url, filename, buttonid) {
+    try {
+        toggleIsLoading('sbtn-'+ buttonid);
+      // Fetch the PDF data as a Blob
+      const response = await fetch(url);
+      const blob = await response.blob();
+  
+      // Create a download link and set its attributes
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = decodeURI(filename.replace("###$###","'"));
+  
+      // Append the link to the document, click it, and remove it
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      
+      toggleIsLoading('sbtn-' + buttonid);
+    } catch (error) {
+        console.log("Error Downloading Song");
+    }
+  }
+  
+
+
+
+  
+var DOWNLOAD_API = "https://openmp3compiler.astudy.org"
+
+function AddDownload(id) {
+    var bitrate_i = 2;
+    // MP3 server API
+    var MP3DL = DOWNLOAD_API+"/add?id="+id;
+    // make api call, if 200, add to download list
+    fetch(MP3DL)
+    .then(response => response.json())
+    .then(data => { console.log(data);
+        if (data.status == "success") {
+            
+            var STATUS_URL = DOWNLOAD_API+"/status?id="+id;
+            
+            // check status every 5 seconds
+            var interval = setInterval(function() {
+                fetch(STATUS_URL)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status) {
+                        // update status
+                        
+                    
+                        if (data.status == "Done") {
+                            // download complete, add download button
+                           
+var newfilename = results_objects[id].track.name + " - " + results_objects[id].track.primaryArtists + ".mp3";
+console.log(newfilename)
+newfilename = encodeURI(newfilename);
+console.log(newfilename)
+newfilename = newfilename.replace("'","###$###")
+console.log(newfilename)
+downloadPDF(DOWNLOAD_API + data.url', 'newfilename','id');
+                            // clear interval
+                            clearInterval(interval);
+                            return;
+                  }}
+              });}, 3000); // end interval
+        } });}
 
 
 
